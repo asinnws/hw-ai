@@ -1,0 +1,65 @@
+/* styles.css */
+
+/* --- Basic CSS Resets --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+
+/* --- Component Styles --- */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+/* --- MOBILE STYLES (default) --- */
+.menu {
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+  position: absolute;
+  /* Changed: Positions menu at the top of the viewport */
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  /* Changed: Hides the menu by moving it up by its own full height */
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
+}
+
+/* This class makes the menu visible by sliding it into view */
+.menu.open {
+  transform: translateY(0);
+}
+
+
+/* --- DESKTOP STYLES --- */
+/* On screens 769px and wider, revert to the desktop layout */
+@media (min-width: 769px) {
+  .menu {
+    position: static;
+    flex-direction: row;
+    width: auto;
+    background: transparent;
+    transform: none;
+  }
+
+  .hamburger {
+    display: none;
+  }
+}
